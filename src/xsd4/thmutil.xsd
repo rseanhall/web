@@ -39,6 +39,7 @@
                 <xs:annotation>
                     <xs:documentation>
                         Identifier that references an image resource in the module for the window.
+                        This image is referenced by controls using the SourceX and SourceY attributes.
                         Mutually exclusive with the ImageFile attribute.
                     </xs:documentation>
                 </xs:annotation>
@@ -165,48 +166,54 @@
             </xs:attribute>
             <xs:attribute name="Height" type="xs:positiveInteger" use="required">
                 <xs:annotation>
-                    <xs:documentation>Height of the window.</xs:documentation>
+                    <xs:documentation>Height of the window's client area.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="HexStyle" type="xs:hexBinary">
                 <xs:annotation>
                     <xs:documentation>
-                        Hexadecimal window style. If this is not specified the default value is: WS_OVERLAPPED | WS_VISIBLE | WS_MINIMIZEBOX | WS_SYSMENU.
+                        Hexadecimal window style. If this is not specified the default value is: WS_OVERLAPPED | WS_VISIBLE | WS_MINIMIZEBOX | WS_SYSMENU | WS_CAPTION.
                         If SourceX and SourceY are specified, then WS_OVERLAPPED is replaced with WS_POPUP.
                     </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="IconFile" type="xs:string">
                 <xs:annotation>
-                    <xs:documentation>Relative path to an icon file for the window. Mutually exclusive with IconResource and SourceX and SourceY attributes.</xs:documentation>
+                    <xs:documentation>Relative path to an icon file for the window. Mutually exclusive with IconResource attribute.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="IconResource" type="xs:string">
                 <xs:annotation>
                     <xs:documentation>
                         Identifier that references an icon resource in the module for the icon for the window.
-                        Mutually exclusive with IconFile and SourceX and SourceY attributes.
+                        Mutually exclusive with IconFile attribute.
                     </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="MinimumHeight" type="xs:positiveInteger">
                 <xs:annotation>
-                    <xs:documentation>Minimum height of the window. Only functions if AutoResize is enabled.</xs:documentation>
+                    <xs:documentation>Minimum height of the window. Can only be specified if AutoResize is enabled.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="MinimumWidth" type="xs:positiveInteger">
                 <xs:annotation>
-                    <xs:documentation>Minimum width of the window. Only functions if AutoResize is enabled.</xs:documentation>
+                    <xs:documentation>Minimum width of the window. Can only be specified if AutoResize is enabled.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="SourceX" type="xs:nonNegativeInteger">
                 <xs:annotation>
-                    <xs:documentation>X offset of the window background in the Theme/@ImageFile. Mutually exclusive with IconFile and IconResource.</xs:documentation>
+                    <xs:documentation>
+                        X offset of the window background in the Theme/@ImageFile or Theme/@ImageResource.
+                        Can only be specified with Theme/@ImageFile or Theme/@ImageResource.
+                    </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="SourceY" type="xs:nonNegativeInteger">
                 <xs:annotation>
-                    <xs:documentation>Y offset of the window background in the Theme/@ImageFile. Mutually exclusive with IconFile and IconResource.</xs:documentation>
+                    <xs:documentation>
+                        Y offset of the window background in the Theme/@ImageFile or Theme/@ImageResource.
+                        Can only be specified with Theme/@ImageFile or Theme/@ImageResource.
+                    </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="StringId" type="xs:nonNegativeInteger">
@@ -219,7 +226,7 @@
             </xs:attribute>
             <xs:attribute name="Width" type="xs:positiveInteger" use="required">
                 <xs:annotation>
-                    <xs:documentation>Width of the window.</xs:documentation>
+                    <xs:documentation>Width of the window's client area.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
         </xs:complexType>
@@ -305,6 +312,24 @@
             <xs:attribute name="SelectedFontId" type="xs:nonNegativeInteger">
                 <xs:annotation>
                     <xs:documentation>Numeric identifier to the Font element that serves as the font when the control is selected. Only valid when using graphic buttons.</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="SourceX" type="xs:nonNegativeInteger">
+                <xs:annotation>
+                    <xs:documentation>
+                        X offset of the Theme/@ImageFile or Theme/@ImageResource.
+                        Can only be specified with Theme/@ImageFile or Theme/@ImageResource.
+                        Mutually exclusive with ImageFile and ImageResource attributes.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="SourceY" type="xs:nonNegativeInteger">
+                <xs:annotation>
+                    <xs:documentation>
+                        Y offset of the Theme/@ImageFile or Theme/@ImageResource.
+                        Can only be specified with Theme/@ImageFile or Theme/@ImageResource.
+                        Mutually exclusive with ImageFile and ImageResource attributes.
+                    </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="StringId" type="xs:nonNegativeInteger">
@@ -468,7 +493,7 @@
                 <xs:annotation>
                     <xs:documentation>
                         Relative path to an icon file to define a command link glyph.
-                        Mutually exclusive with ImageResource and SourceX and SourceY attributes.
+                        Mutually exclusive with IconResource and ImageFile and ImageResource attributes.
                     </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
@@ -476,7 +501,7 @@
                 <xs:annotation>
                     <xs:documentation>
                         Identifier that references an icon resource in the module to define a command link glyph.
-                        Mutually exclusive with ImageFile and SourceX and SourceY attributes.
+                        Mutually exclusive with IconFile and ImageFile and ImageResource attributes.
                     </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
@@ -484,7 +509,7 @@
                 <xs:annotation>
                     <xs:documentation>
                         Relative path to an image file to define a command link glyph.
-                        Mutually exclusive with ImageResource and SourceX and SourceY attributes.
+                        Mutually exclusive with IconFile and IconResource and ImageResource attributes.
                     </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
@@ -492,7 +517,7 @@
                 <xs:annotation>
                     <xs:documentation>
                         Identifier that references an image resource in the module to define a command link glyph.
-                        Mutually exclusive with ImageFile and SourceX and SourceY attributes.
+                        Mutually exclusive with IconFile and IconResource and ImageFile attributes.
                     </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
@@ -649,6 +674,24 @@
                     <xs:documentation>Identifier that references an image resource in the module. Mutually exclusive with ImageFile and SourceX and SourceY attributes.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
+            <xs:attribute name="SourceX" type="xs:nonNegativeInteger">
+                <xs:annotation>
+                    <xs:documentation>
+                        X offset of the Theme/@ImageFile or Theme/@ImageResource.
+                        Can only be specified with Theme/@ImageFile or Theme/@ImageResource.
+                        Mutually exclusive with ImageFile and ImageResource attributes.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="SourceY" type="xs:nonNegativeInteger">
+                <xs:annotation>
+                    <xs:documentation>
+                        Y offset of the Theme/@ImageFile or Theme/@ImageResource.
+                        Can only be specified with Theme/@ImageFile or Theme/@ImageResource.
+                        Mutually exclusive with ImageFile and ImageResource attributes.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
         </xs:complexType>
     </xs:element>
 
@@ -795,6 +838,24 @@
             <xs:attribute name="ImageResource" type="xs:string">
                 <xs:annotation>
                     <xs:documentation>Identifier that references an image resource in the module for the control. The image must be 4 pixels wide: left pixel is the left side of progress bar, left middle pixel is progress used, right middle pixel is progress unused, right pixel is right side of progress bar. Mutually exclusive with ImageFile and SourceX and SourceY attributes.</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="SourceX" type="xs:nonNegativeInteger">
+                <xs:annotation>
+                    <xs:documentation>
+                        X offset of the Theme/@ImageFile or Theme/@ImageResource.
+                        Can only be specified with Theme/@ImageFile or Theme/@ImageResource.
+                        Mutually exclusive with ImageFile and ImageResource attributes.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="SourceY" type="xs:nonNegativeInteger">
+                <xs:annotation>
+                    <xs:documentation>
+                        Y offset of the Theme/@ImageFile or Theme/@ImageResource.
+                        Can only be specified with Theme/@ImageFile or Theme/@ImageResource.
+                        Mutually exclusive with ImageFile and ImageResource attributes.
+                    </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
         </xs:complexType>
