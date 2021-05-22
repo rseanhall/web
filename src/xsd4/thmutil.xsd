@@ -57,9 +57,9 @@
                     <xs:annotation>
                         <xs:documentation>Name of the font face (required).</xs:documentation>
                     </xs:annotation>
-                    <xs:attribute name="Id" type="xs:nonNegativeInteger" use="required">
+                    <xs:attribute name="Id" type="xs:string" use="required">
                         <xs:annotation>
-                            <xs:documentation>Numeric identifier for the font. Due to limitations in thmutil the first Font must start with "0" and each subsequent Font must increment the Id by 1. Failure to ensure the Font identifiers follow this strict ordering will create unexpected behavior or crashes.</xs:documentation>
+                            <xs:documentation>Identifier for the font.</xs:documentation>
                         </xs:annotation>
                     </xs:attribute>
                     <xs:attribute name="Height" type="xs:int" use="required">
@@ -159,9 +159,9 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
-            <xs:attribute name="FontId" type="xs:nonNegativeInteger" use="required">
+            <xs:attribute name="FontId" type="xs:string" use="required">
                 <xs:annotation>
-                    <xs:documentation>Numeric identifier to the Font element that serves as the default font for the window.</xs:documentation>
+                    <xs:documentation>Identifier to the Font element that serves as the default font for the window.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="Height" type="xs:positiveInteger" use="required">
@@ -285,19 +285,19 @@
             </xs:choice>
             <xs:attributeGroup ref="CommonControlAttributes" />
             <xs:attributeGroup ref="OwnerDrawImageAttributes" />
-            <xs:attribute name="FontId" type="xs:nonNegativeInteger" use="required">
+            <xs:attribute name="FontId" type="xs:string">
                 <xs:annotation>
-                    <xs:documentation>Numeric identifier to the Font element that serves as the font for the control. Only valid when using graphic buttons.</xs:documentation>
+                    <xs:documentation>Identifier to the Font element that serves as the font for the control. Only valid when using graphic buttons.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
-            <xs:attribute name="HoverFontId" type="xs:nonNegativeInteger">
+            <xs:attribute name="HoverFontId" type="xs:string">
                 <xs:annotation>
-                    <xs:documentation>Numeric identifier to the Font element that serves as the font when the control is hovered over. Only valid when using graphic buttons.</xs:documentation>
+                    <xs:documentation>Identifier to the Font element that serves as the font when the control is hovered over. Only valid when using graphic buttons.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
-            <xs:attribute name="SelectedFontId" type="xs:nonNegativeInteger">
+            <xs:attribute name="SelectedFontId" type="xs:string">
                 <xs:annotation>
-                    <xs:documentation>Numeric identifier to the Font element that serves as the font when the control is selected. Only valid when using graphic buttons.</xs:documentation>
+                    <xs:documentation>Identifier to the Font element that serves as the font when the control is selected. Only valid when using graphic buttons.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="StringId" type="xs:nonNegativeInteger">
@@ -398,9 +398,9 @@
                 <xs:element ref="Tooltip" maxOccurs="1" />
             </xs:choice>
             <xs:attributeGroup ref="CommonControlAttributes" />
-            <xs:attribute name="FontId" type="xs:nonNegativeInteger" use="required">
+            <xs:attribute name="FontId" type="xs:string">
                 <xs:annotation>
-                    <xs:documentation>Numeric identifier to the Font element that serves as the font for the control.</xs:documentation>
+                    <xs:documentation>Identifier to the Font element that serves as the font for the control.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="StringId" type="xs:nonNegativeInteger">
@@ -419,9 +419,9 @@
         </xs:annotation>
         <xs:complexType>
             <xs:attributeGroup ref="CommonControlAttributes" />
-            <xs:attribute name="FontId" type="xs:nonNegativeInteger" use="required">
+            <xs:attribute name="FontId" type="xs:string">
                 <xs:annotation>
-                    <xs:documentation>Numeric identifier to the Font element that serves as the font for the control.</xs:documentation>
+                    <xs:documentation>Identifier to the Font element that serves as the font for the control.</xs:documentation>
                 </xs:annotation>
              </xs:attribute>
         </xs:complexType>
@@ -452,9 +452,9 @@
                 <xs:element ref="Text" />
             </xs:choice>
             <xs:attributeGroup ref="CommonControlAttributes" />
-            <xs:attribute name="FontId" type="xs:nonNegativeInteger" use="required">
+            <xs:attribute name="FontId" type="xs:string">
                 <xs:annotation>
-                    <xs:documentation>Numeric identifier to the Font element that serves as the font for the control. Only valid when using graphic buttons.</xs:documentation>
+                    <xs:documentation>Identifier to the Font element that serves as the font for the control. Only valid when using graphic buttons.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="IconFile" type="xs:string">
@@ -518,9 +518,9 @@
                             <xs:documentation>Specifies whether the edit box should auto-complete with file system paths.</xs:documentation>
                         </xs:annotation>
                     </xs:attribute>
-                    <xs:attribute name="FontId" type="xs:nonNegativeInteger" use="required">
+                    <xs:attribute name="FontId" type="xs:string">
                         <xs:annotation>
-                            <xs:documentation>Numeric identifier to the Font element that serves as the font for the control.</xs:documentation>
+                            <xs:documentation>Identifier to the Font element that serves as the font for the control.</xs:documentation>
                         </xs:annotation>
                     </xs:attribute>
                     <xs:attribute name="StringId" type="xs:nonNegativeInteger">
@@ -551,19 +551,19 @@
                 <xs:element ref="Tooltip" maxOccurs="1" />
             </xs:choice>
             <xs:attributeGroup ref="CommonControlAttributes" />
-            <xs:attribute name="FontId" type="xs:nonNegativeInteger" use="required">
+            <xs:attribute name="FontId" type="xs:string">
                 <xs:annotation>
-                    <xs:documentation>Numeric identifier to the Font element that serves as the unselected font.</xs:documentation>
+                    <xs:documentation>Identifier to the Font element that serves as the unselected font.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
-            <xs:attribute name="HoverFontId" type="xs:nonNegativeInteger" use="required">
+            <xs:attribute name="HoverFontId" type="xs:string" use="required">
                 <xs:annotation>
-                    <xs:documentation>Numeric identifier to the Font element that serves as the font when the control is hovered over.</xs:documentation>
+                    <xs:documentation>Identifier to the Font element that serves as the font when the control is hovered over.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
-            <xs:attribute name="SelectedFontId" type="xs:nonNegativeInteger" use="required">
+            <xs:attribute name="SelectedFontId" type="xs:string" use="required">
                 <xs:annotation>
-                    <xs:documentation>Numeric identifier to the Font element that serves as the font when the control is selected.</xs:documentation>
+                    <xs:documentation>Identifier to the Font element that serves as the font when the control is selected.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="StringId" type="xs:nonNegativeInteger">
@@ -593,9 +593,9 @@
                 <xs:element ref="Tooltip" maxOccurs="1" />
             </xs:choice>
             <xs:attributeGroup ref="CommonControlAttributes" />
-            <xs:attribute name="FontId" type="xs:nonNegativeInteger" use="required">
+            <xs:attribute name="FontId" type="xs:string">
                 <xs:annotation>
-                    <xs:documentation>Numeric identifier to the Font element that serves as the font for the control.</xs:documentation>
+                    <xs:documentation>Identifier to the Font element that serves as the font for the control.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="StringId" type="xs:nonNegativeInteger">
@@ -662,7 +662,7 @@
                     <xs:documentation>By default ampersands (&amp;) in the text will underline the next character and treat it as an accelerator key. Set this attribute to "yes" to disable that behavior. Default is "no".</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
-            <xs:attribute name="FontId" type="xs:nonNegativeInteger" use="required">
+            <xs:attribute name="FontId" type="xs:string">
                 <xs:annotation>
                     <xs:documentation>Numeric identifier to the Font element that serves as the font for the control.</xs:documentation>
                 </xs:annotation>
@@ -686,9 +686,9 @@
                 <xs:element ref="Column" />
             </xs:choice>
             <xs:attributeGroup ref="CommonControlAttributes" />
-            <xs:attribute name="FontId" type="xs:nonNegativeInteger">
+            <xs:attribute name="FontId" type="xs:string">
                 <xs:annotation>
-                    <xs:documentation>Numeric identifier to the Font element that serves as the default font for the ListView.</xs:documentation>
+                    <xs:documentation>Identifier to the Font element that serves as the default font for the ListView.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="HexExtendedStyle" type="xs:hexBinary">
@@ -794,9 +794,9 @@
                 <xs:element ref="Tooltip" maxOccurs="1" />
             </xs:choice>
             <xs:attributeGroup ref="CommonControlAttributes" />
-            <xs:attribute name="FontId" type="xs:nonNegativeInteger" use="required">
+            <xs:attribute name="FontId" type="xs:string">
                 <xs:annotation>
-                    <xs:documentation>Numeric identifier to the Font element that serves as the font for the control.</xs:documentation>
+                    <xs:documentation>Identifier to the Font element that serves as the font for the control.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="StringId" type="xs:nonNegativeInteger">
@@ -846,10 +846,10 @@
                 <xs:element ref="Tooltip" maxOccurs="1" />
             </xs:choice>
             <xs:attributeGroup ref="CommonControlAttributes" />
-            <xs:attribute name="FontId" type="xs:nonNegativeInteger" use="required">
+            <xs:attribute name="FontId" type="xs:string">
                 <xs:annotation>
                     <xs:documentation>
-                        Numeric identifier to the Font element that serves as the font for the control.
+                        Identifier to the Font element that serves as the font for the control.
                     </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
@@ -906,9 +906,9 @@
                 <xs:element ref="Tab" />
             </xs:choice>
             <xs:attributeGroup ref="CommonControlAttributes" />
-            <xs:attribute name="FontId" type="xs:nonNegativeInteger" use="required">
+            <xs:attribute name="FontId" type="xs:string">
                 <xs:annotation>
-                    <xs:documentation>Numeric identifier to the Font element that serves as the font for the control.</xs:documentation>
+                    <xs:documentation>Identifier to the Font element that serves as the font for the control.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
         </xs:complexType>
@@ -1136,7 +1136,7 @@
                 </xs:documentation>
             </xs:annotation>
         </xs:attribute>
-        <xs:attribute name="ImageResource" type="xs:string">
+        <xs:attribute name="ImageResource" type="xs:nonNegativeInteger">
             <xs:annotation>
                 <xs:documentation>
                     Identifier that references an image resource with type RT_RCDATA in the module for the control.
