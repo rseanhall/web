@@ -108,7 +108,7 @@
         </xs:annotation>
         <xs:complexType>
             <xs:choice maxOccurs="unbounded">
-                <xs:element ref="Image" />
+                <xs:element ref="ImageListItem" />
             </xs:choice>
             <xs:attribute name="Name" type="xs:string" use="required">
                 <xs:annotation>
@@ -238,7 +238,7 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="Image" />
+                <xs:element ref="ImageControl" />
             </xs:sequence>
             <xs:attributeGroup ref="CommonControlAttributes" />
             <xs:attribute name="Interval" type="xs:positiveInteger">
@@ -608,9 +608,9 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="Image">
+    <xs:element name="ImageListItem">
         <xs:annotation>
-            <xs:documentation>Defines an image for an ImageList or Billboard.</xs:documentation>
+            <xs:documentation>Defines an image for an ImageList.</xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:attribute name="ImageFile" type="xs:string">
@@ -618,7 +618,7 @@
                     <xs:documentation>Relative path to an image file. Mutually exclusive with ImageResource.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
-            <xs:attribute name="ImageResource" type="xs:string">
+            <xs:attribute name="ImageResource" type="xs:nonNegativeInteger">
                 <xs:annotation>
                     <xs:documentation>Identifier that references an image resource in the module. Mutually exclusive with ImageFile.</xs:documentation>
                 </xs:annotation>
