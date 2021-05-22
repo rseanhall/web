@@ -258,7 +258,10 @@
 
     <xs:element name="Button">
         <xs:annotation>
-            <xs:documentation>Defines a button.</xs:documentation>
+            <xs:documentation>
+                Defines a button.
+                When specifying an image it must contain 4 subimages with the equal heights to represent the button in 4 states: top quarter is unselected, top middle quarter is hover, bottom middle quarter is selected, bottom quarter is focused.
+            </xs:documentation>
         </xs:annotation>
         <xs:complexType mixed="true">
             <xs:annotation>
@@ -281,6 +284,7 @@
                 <xs:element ref="Tooltip" maxOccurs="1" />
             </xs:choice>
             <xs:attributeGroup ref="CommonControlAttributes" />
+            <xs:attributeGroup ref="OwnerDrawImageAttributes" />
             <xs:attribute name="FontId" type="xs:nonNegativeInteger" use="required">
                 <xs:annotation>
                     <xs:documentation>Numeric identifier to the Font element that serves as the font for the control. Only valid when using graphic buttons.</xs:documentation>
@@ -291,45 +295,9 @@
                     <xs:documentation>Numeric identifier to the Font element that serves as the font when the control is hovered over. Only valid when using graphic buttons.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
-            <xs:attribute name="ImageFile" type="xs:string">
-                <xs:annotation>
-                    <xs:documentation>
-                        Relative path to an image file to define a graphic button.
-                        The image must be 4x the height to represent the button in 4 states: unselected, hover, selected, focused.
-                        Mutually exclusive with ImageResource and SourceX and SourceY attributes.
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:attribute>
-            <xs:attribute name="ImageResource" type="xs:string">
-                <xs:annotation>
-                    <xs:documentation>
-                        Identifier that references an image resource in the module to define a graphic button.
-                        The image must be 4x the height to represent the button in 4 states: unselected, hover, selected, focused.
-                        Mutually exclusive with ImageFile and SourceX and SourceY attributes.
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:attribute>
             <xs:attribute name="SelectedFontId" type="xs:nonNegativeInteger">
                 <xs:annotation>
                     <xs:documentation>Numeric identifier to the Font element that serves as the font when the control is selected. Only valid when using graphic buttons.</xs:documentation>
-                </xs:annotation>
-            </xs:attribute>
-            <xs:attribute name="SourceX" type="xs:nonNegativeInteger">
-                <xs:annotation>
-                    <xs:documentation>
-                        X offset of the Theme/@ImageFile or Theme/@ImageResource.
-                        Can only be specified with Theme/@ImageFile or Theme/@ImageResource.
-                        Mutually exclusive with ImageFile and ImageResource attributes.
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:attribute>
-            <xs:attribute name="SourceY" type="xs:nonNegativeInteger">
-                <xs:annotation>
-                    <xs:documentation>
-                        Y offset of the Theme/@ImageFile or Theme/@ImageResource.
-                        Can only be specified with Theme/@ImageFile or Theme/@ImageResource.
-                        Mutually exclusive with ImageFile and ImageResource attributes.
-                    </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="StringId" type="xs:nonNegativeInteger">
@@ -664,34 +632,7 @@
         </xs:annotation>
         <xs:complexType>
             <xs:attributeGroup ref="CommonControlAttributes" />
-            <xs:attribute name="ImageFile" type="xs:string">
-                <xs:annotation>
-                    <xs:documentation>Relative path to an image file. Mutually exclusive with ImageResource and SourceX and SourceY attributes.</xs:documentation>
-                </xs:annotation>
-            </xs:attribute>
-            <xs:attribute name="ImageResource" type="xs:string">
-                <xs:annotation>
-                    <xs:documentation>Identifier that references an image resource in the module. Mutually exclusive with ImageFile and SourceX and SourceY attributes.</xs:documentation>
-                </xs:annotation>
-            </xs:attribute>
-            <xs:attribute name="SourceX" type="xs:nonNegativeInteger">
-                <xs:annotation>
-                    <xs:documentation>
-                        X offset of the Theme/@ImageFile or Theme/@ImageResource.
-                        Can only be specified with Theme/@ImageFile or Theme/@ImageResource.
-                        Mutually exclusive with ImageFile and ImageResource attributes.
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:attribute>
-            <xs:attribute name="SourceY" type="xs:nonNegativeInteger">
-                <xs:annotation>
-                    <xs:documentation>
-                        Y offset of the Theme/@ImageFile or Theme/@ImageResource.
-                        Can only be specified with Theme/@ImageFile or Theme/@ImageResource.
-                        Mutually exclusive with ImageFile and ImageResource attributes.
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:attribute>
+            <xs:attributeGroup ref="OwnerDrawImageAttributes" />
         </xs:complexType>
     </xs:element>
 
@@ -826,38 +767,14 @@
 
     <xs:element name="Progressbar">
         <xs:annotation>
-            <xs:documentation>Defines a progress bar.</xs:documentation>
+            <xs:documentation>
+                Defines a progress bar.
+                When specifying an image it must be 4 pixels wide: left pixel is the left side of progress bar, left middle pixel is progress used, right middle pixel is progress unused, right pixel is right side of progress bar. 
+            </xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:attributeGroup ref="CommonControlAttributes" />
-            <xs:attribute name="ImageFile" type="xs:string">
-                <xs:annotation>
-                    <xs:documentation>Relative path to an image file for the control. The image must be 4 pixels wide: left pixel is the left side of progress bar, left middle pixel is progress used, right middle pixel is progress unused, right pixel is right side of progress bar. Mutually exclusive with ImageResource and SourceX and SourceY attributes.</xs:documentation>
-                </xs:annotation>
-            </xs:attribute>
-            <xs:attribute name="ImageResource" type="xs:string">
-                <xs:annotation>
-                    <xs:documentation>Identifier that references an image resource in the module for the control. The image must be 4 pixels wide: left pixel is the left side of progress bar, left middle pixel is progress used, right middle pixel is progress unused, right pixel is right side of progress bar. Mutually exclusive with ImageFile and SourceX and SourceY attributes.</xs:documentation>
-                </xs:annotation>
-            </xs:attribute>
-            <xs:attribute name="SourceX" type="xs:nonNegativeInteger">
-                <xs:annotation>
-                    <xs:documentation>
-                        X offset of the Theme/@ImageFile or Theme/@ImageResource.
-                        Can only be specified with Theme/@ImageFile or Theme/@ImageResource.
-                        Mutually exclusive with ImageFile and ImageResource attributes.
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:attribute>
-            <xs:attribute name="SourceY" type="xs:nonNegativeInteger">
-                <xs:annotation>
-                    <xs:documentation>
-                        Y offset of the Theme/@ImageFile or Theme/@ImageResource.
-                        Can only be specified with Theme/@ImageFile or Theme/@ImageResource.
-                        Mutually exclusive with ImageFile and ImageResource attributes.
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:attribute>
+            <xs:attributeGroup ref="OwnerDrawImageAttributes" />
         </xs:complexType>
     </xs:element>
 
@@ -1206,6 +1123,43 @@
         <xs:attribute name="Y" type="xs:int" use="required">
             <xs:annotation>
                 <xs:documentation>Y coordinate for the control from the top of the window. Negative values are coordinates from the bottom of the window minus the height of the control.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+
+    <xs:attributeGroup name="OwnerDrawImageAttributes">
+        <xs:attribute name="ImageFile" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>
+                    Relative path to an image file for the control.
+                    Mutually exclusive with ImageResource and SourceX and SourceY attributes.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="ImageResource" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>
+                    Identifier that references an image resource with type RT_RCDATA in the module for the control.
+                    Mutually exclusive with ImageFile and SourceX and SourceY attributes.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="SourceX" type="xs:nonNegativeInteger">
+            <xs:annotation>
+                <xs:documentation>
+                    X offset of the Theme/@ImageFile or Theme/@ImageResource.
+                    Can only be specified with Theme/@ImageFile or Theme/@ImageResource.
+                    Mutually exclusive with ImageFile and ImageResource attributes.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="SourceY" type="xs:nonNegativeInteger">
+            <xs:annotation>
+                <xs:documentation>
+                    Y offset of the Theme/@ImageFile or Theme/@ImageResource.
+                    Can only be specified with Theme/@ImageFile or Theme/@ImageResource.
+                    Mutually exclusive with ImageFile and ImageResource attributes.
+                </xs:documentation>
             </xs:annotation>
         </xs:attribute>
     </xs:attributeGroup>
