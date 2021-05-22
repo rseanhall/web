@@ -556,12 +556,12 @@
                     <xs:documentation>Identifier to the Font element that serves as the unselected font.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
-            <xs:attribute name="HoverFontId" type="xs:string" use="required">
+            <xs:attribute name="HoverFontId" type="xs:string">
                 <xs:annotation>
                     <xs:documentation>Identifier to the Font element that serves as the font when the control is hovered over.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
-            <xs:attribute name="SelectedFontId" type="xs:string" use="required">
+            <xs:attribute name="SelectedFontId" type="xs:string">
                 <xs:annotation>
                     <xs:documentation>Identifier to the Font element that serves as the font when the control is selected.</xs:documentation>
                 </xs:annotation>
