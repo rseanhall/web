@@ -24,6 +24,7 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element ref="Font" maxOccurs="unbounded" />
+                <xs:element ref="Image" maxOccurs="unbounded" />
                 <xs:element ref="Window" />
             </xs:sequence>
             <xs:attribute name="ImageFile" type="xs:string">
@@ -99,6 +100,44 @@
                     </xs:attribute>
                 </xs:extension>
             </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Image">
+        <xs:annotation>
+            <xs:documentation>
+                Defines an image which can be shared between multiple controls.
+                If alternates are provided, the dimensions of the destination rectangle are compared to all of the available sources:
+                1. If there is an exact match for width and height then that source will be used (no scaling required).
+                2. If there is not an exact match then the smallest source whose width and height are larger or equal to the destination will be used and downscaled.
+                3. If there is still no match then the largest source will be used and upscaled.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:choice maxOccurs="unbounded">
+                <xs:element ref="AlternateResolution" />
+            </xs:choice>
+            <xs:attribute name="Id" type="xs:string" use="required">
+                <xs:annotation>
+                    <xs:documentation>Identifier for the Image.</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="ImageFile" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+                        Relative path to an image file for the control.
+                        Mutually exclusive with ImageResource attribute.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="ImageResource" type="xs:nonNegativeInteger">
+                <xs:annotation>
+                    <xs:documentation>
+                        Identifier that references an image resource with type RT_RCDATA in the module for the control.
+                        Mutually exclusive with ImageFile attribute.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
         </xs:complexType>
     </xs:element>
 
@@ -251,6 +290,32 @@
             <xs:attribute name="Loop" type="YesNoType">
                 <xs:annotation>
                     <xs:documentation>Specifies whether the billboard should loop through the images infinitely.</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="AlternateResolution">
+        <xs:annotation>
+            <xs:documentation>
+                Defines an alternate resolution to avoid scaling in different DPIs.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:attribute name="ImageFile" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+                        Relative path to an image file for the control.
+                        Mutually exclusive with ImageResource attribute.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="ImageResource" type="xs:nonNegativeInteger">
+                <xs:annotation>
+                    <xs:documentation>
+                        Identifier that references an image resource with type RT_RCDATA in the module for the control.
+                        Mutually exclusive with ImageFile attribute.
+                    </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
         </xs:complexType>
@@ -628,7 +693,7 @@
 
     <xs:element name="ImageControl">
         <xs:annotation>
-            <xs:documentation>Defines an image.</xs:documentation>
+            <xs:documentation>Defines an image control.</xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:attributeGroup ref="CommonControlAttributes" />
@@ -1128,11 +1193,19 @@
     </xs:attributeGroup>
 
     <xs:attributeGroup name="OwnerDrawImageAttributes">
+        <xs:attribute name="ImageId" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>
+                    Identifier to the Image element that serves as the image for the control.
+                    Mutually exclusive with ImageFile and ImageResource and SourceX and SourceY attributes.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
         <xs:attribute name="ImageFile" type="xs:string">
             <xs:annotation>
                 <xs:documentation>
                     Relative path to an image file for the control.
-                    Mutually exclusive with ImageResource and SourceX and SourceY attributes.
+                    Mutually exclusive with ImageId and ImageResource and SourceX and SourceY attributes.
                 </xs:documentation>
             </xs:annotation>
         </xs:attribute>
@@ -1140,7 +1213,7 @@
             <xs:annotation>
                 <xs:documentation>
                     Identifier that references an image resource with type RT_RCDATA in the module for the control.
-                    Mutually exclusive with ImageFile and SourceX and SourceY attributes.
+                    Mutually exclusive with ImageId and ImageFile and SourceX and SourceY attributes.
                 </xs:documentation>
             </xs:annotation>
         </xs:attribute>
@@ -1149,7 +1222,7 @@
                 <xs:documentation>
                     X offset of the Theme/@ImageFile or Theme/@ImageResource.
                     Can only be specified with Theme/@ImageFile or Theme/@ImageResource.
-                    Mutually exclusive with ImageFile and ImageResource attributes.
+                    Mutually exclusive with ImageId and ImageFile and ImageResource attributes.
                 </xs:documentation>
             </xs:annotation>
         </xs:attribute>
@@ -1158,7 +1231,7 @@
                 <xs:documentation>
                     Y offset of the Theme/@ImageFile or Theme/@ImageResource.
                     Can only be specified with Theme/@ImageFile or Theme/@ImageResource.
-                    Mutually exclusive with ImageFile and ImageResource attributes.
+                    Mutually exclusive with ImageId and ImageFile and ImageResource attributes.
                 </xs:documentation>
             </xs:annotation>
         </xs:attribute>
