@@ -273,25 +273,34 @@
 
     <xs:element name="Billboard">
         <xs:annotation>
-            <xs:documentation>Defines a control that rotates through a set of images on a specified interval.</xs:documentation>
+            <xs:documentation>Defines a control that rotates through a set of panels on a specified interval.</xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="ImageControl" />
+                <xs:element ref="BillboardPanel" />
             </xs:sequence>
             <xs:attributeGroup ref="CommonControlAttributes" />
             <xs:attribute name="Interval" type="xs:positiveInteger">
                 <xs:annotation>
                     <xs:documentation>
-                        Specifies the time to wait before showing the next image, in milliseconds.
+                        Specifies the time to wait before showing the next panel, in milliseconds.
                     </xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="Loop" type="YesNoType">
                 <xs:annotation>
-                    <xs:documentation>Specifies whether the billboard should loop through the images infinitely.</xs:documentation>
+                    <xs:documentation>Specifies whether the billboard should loop through the panels infinitely.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="BillboardPanel">
+        <xs:annotation>
+            <xs:documentation>Defines a collection of controls.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:group ref="ControlElements" maxOccurs="unbounded"/>
         </xs:complexType>
     </xs:element>
 
